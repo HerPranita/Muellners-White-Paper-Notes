@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\graphicspath{ {./res-images/} }
+\usepackage{listings}
+\begin{document}
+
+\title{An Open Protocol for Decentralized Exchange on the Ethereum Blockchain}
+\author{Pranita A Herwade}
+\date{January 2021}
+
+\maketitle 
+
+\section{Introduction}
+Blockchain technology has enabled parties to own and exchange assets through trustless smart contracts through ethereum. Such decentralised exchange removed the necessity of a middleman and distributed the responsibility of security among users. As blockchain technology evolves, rapid iterations in the existing decentralised applications (dApps) cause blockchains to be scattered with proprietary and application-specific implementations. End users are left with smart contracts having various levels of quality and security. It leads to unnecessary fragmentation of end-users based on particular dApps. It is essential to drive sophisticated dApps with open protocol, being a fundamental building block in combination with other protocols. Therefore, it is important to have an open protocol/standard for exchange to support the open economy.
+
+Existing decentralised exchanges implemented with ethereum smart contracts have inefficiencies in their design, such as the high market cost of market makers. Some alternatives like Automated Market Maker (AMM), state channels, and hybrid implementations are suggested to reduce the cost for a variety of applications.  
+
+\subsection{Smart contract specifications:}
+Ethereum blockchain smart contracts have an information flow while making off-chain order relay and on-chain settlement. The relayer, who hosts and maintains the order book, cites a fee schedule and the address to collect transaction fees. Accordingly, the maker creates an order with feeA, feeB, and feeRecipient specifying transaction fee value and an address used by Relayer to collect transaction fees. A maker transmits the signed order to the relayer. The order is accepted or rejected based on its validity, fair required fees. Once the order is accepted, it is posted to the order book for takers. Taker fills the order through exchange contract on Ethereum blockchain. Conventional exchange services use a matching engine that ensures users that regulated entities are accountable if anyone tries to cheat or malfunction the event. But, to maintain the trustless open exchange protocol, relayers can only recommend but are not allowed to execute trades on behalf of makers and takers. 
+
+\subsection{Smart Contract}
+Ethereum smart contract includes free to use and publicly accessible exchange protocol. The entire contract is a 100 lines code, written in the solidity programming language, containing two functions, fill and cancel. It takes 90k gas to fill the order. Each smart exchange contract is fulfilled only with the authenticated signature of the maker and taker. It also keeps a record of each previously filled order in the mapping to avoid repetition of the same order. Each order has an expiration time that is given by a block timestamp in the Ethereum virtual machine. If the order is unfilled or unexpired, still the maker can cancel it using the exchange smart contract’s cancel function paying the cost. 
+
+\subsection{Protocol Token}
+Crypto economic protocols create financial incentives that drive a network of rational economic agents coordinating their behaviour for the completion of the process. Open exchange protocol generally serves the signalling between buyers and sellers, but it can be used as an open standard in dApps to incorporate exchange functionality. Open standard establishment and maintenance have coordination issues as each party may have different needs and financial incentives. To align financial incentives and offset costs regarding organising multiple parties around a single technical standard, protocol tokens can be used. In addition, it can address other challenging issues, such as future-proof protocol implemented within an immutable system of smart contracts through decentralised governance. 
+
+\subsection{Decentralised governance}
+The Ethereum smart contract internal logic can not be changed once it is deployed to the blockchain. Instead, one needs to deploy a completely new contract if it needs to be updated/iterated. It may either fork the network or disrupt the users and processes depending on the protocol till they opt-in for the newer version. A disruptive protocol can invalidate all open orders requiring each marketer to approve a new smart contract to access their trading balances. But, a protocol can help in neutralising network effects due to dApps interoperability. And, smart contract abstraction can be used to integrate updates into a protocol without disrupting higher-level processes. 
+
+The open exchange deployed to Ethereum blockchain with a fixed supply of protocol tokens issued to partner with dApps and future end users can help market participants pay transaction fees to Relayers and decentralised governance over updates to the protocol. 
+
+Orders have a machine-readable hexadecimal bytecode that is difficult for a human to interpret visually. Token registry contract can be used to store a list of tokens with associated metadata for each token, such as name, symbol, contract address, and the number of decimal places needed to represent a token’s smallest unit. It will represent an official on-chain reference used by market participants to verify token addresses and exchange rates before trading independently. Token registry as a trusted source of information, the oversight provided by the open exchange stakeholders will be needed to add, modify, or remove tokens from the registry. Open exchange protocol can be used to trade any token from the token registry as it will be easy to verify order integrity. The open protocol format might be changed in future to make it human-readable.  
+
+\section{Summary (As given in the paper)}
+\begin{itemize}
+	\item Off-chain order relay + on-chain settlement = low friction costs for market makers + fast settlement. 
+  
+	\item Publicly accessible smart contracts that any dApp can hook into.
+  
+	\item AI For Finding LocationsRelayers can create their own liquidity pools and charge transaction fees on volume. • Standardization + decoupling = Shared protocol layer → 
+  \subitem Provides interoperability between dApps 
+  \subitem Creates network effects around liquidity that are mutually beneficial 
+  \subitem Reduces barriers-to-entry, driving down costs for market participants 
+  \subitem Eliminates redundancy, improves user experience and smart contract security
+
+	\item Decentralized update mechanism allows improvements to be continuously and safely integrated into the protocol without disrupting dApps or end users.
+
+\end{itemize}
+
+\end{document}
